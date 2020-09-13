@@ -9,7 +9,7 @@ console.log("Lexa deserved better");
 var currentDay = $("#currentDay");
 var calenderEl = $(".container");
 var now = moment().format("dddd, MMMM Do, YYYY");
-var daysTime = moment().format("LT");
+var daysTime = moment().format("HH");
 var past = $(".past");
 var present = $(".present");
 var future = $(".future");
@@ -18,18 +18,17 @@ var future = $(".future");
 console.log(daysTime);
 // console.log(m);
 
-// var timeArray = [
-//   moment("9:00 AM", "h A"),
-//   moment("10:00 AM", "h A"),
-//   moment("11:00 AM", "h A"),
-//   moment("12:00 PM", "h A"),
-//   moment("1:00 PM", "h A"),
-//   moment("2:00 PM", "h A"),
-//   moment("3:00 PM", "h A"),
-//   moment("4:00 PM", "h A"),
-//   moment("5:00 PM", "h A"),
-// ];
-// console.log(timeArray[0]._i);
+var timeArray = [
+  moment("9:00 AM", "h A"),
+  moment("10:00 AM", "h A"),
+  moment("11:00 AM", "h A"),
+  moment("12:00 PM", "h A"),
+  moment("1:00 PM", "h A"),
+  moment("2:00 PM", "h A"),
+  moment("3:00 PM", "h A"),
+  moment("4:00 PM", "h A"),
+  moment("5:00 PM", "h A"),
+];
 
 var hoursArray = ["09", "10", "11", "12", "13", "14", "15", "16", "17"];
 
@@ -52,16 +51,19 @@ $(document).ready(function () {
     textEl.addClass("textarea col-sm-8 description");
     textEl.attr("placeholder, enter your todo list");
     textEl.attr("data-hour", hoursArray[i]);
+
+    if (textEl.attr("data-hour") < daysTime) {
+      textEl.addClass("past");
+    } else if (textEl.attr("data-hour") == daysTime) {
+      textEl.addClass("present");
+    } else {
+      textEl.addClass("future");
+    }
+
+    // RETRIEVING LOCAL STORAGE
     if (localStorage.getItem(hoursArray[i]) != null) {
       textEl.text(localStorage.getItem(hoursArray[i]));
     }
-    // if (hoursArray[i] < daysTime) {
-    //   textEl.addClass("past");
-    // } else if (hoursEl === daysTime) {
-    //   textEl.addClass("present");
-    // } else {
-    //   textEl.addClass("future");
-    // }
     rowEl.append(textEl);
 
     var buttonEl = $("<button>");
@@ -81,20 +83,4 @@ $(document).ready(function () {
 
     localStorage.setItem(saveHour, saveText);
   });
-
-  // CONNECT ACTIVE CURRENT TIME TO THE HOUREL
-  // setInterval
-
-  // CONDITIONAL FOR THE ROW COLORS
-  // if (hourEl < currentHour) {
-  //   rowEl.addClass("past");
-  // } else if (hourEl === currentHour) {
-  //   rowEl.addClass("present");
-  // } else {
-  //   rowEl.addClass("future");
-  // }
-  // console.log(currentHour);
 });
-
-//   // $(".btn").on("click", function () {
-//   // function mySave() {
