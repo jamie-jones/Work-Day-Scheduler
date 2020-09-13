@@ -13,22 +13,9 @@ var daysTime = moment().format("HH");
 var past = $(".past");
 var present = $(".present");
 var future = $(".future");
-// var m = moment();
 
 console.log(daysTime);
 // console.log(m);
-
-var timeArray = [
-  moment("9:00 AM", "h A"),
-  moment("10:00 AM", "h A"),
-  moment("11:00 AM", "h A"),
-  moment("12:00 PM", "h A"),
-  moment("1:00 PM", "h A"),
-  moment("2:00 PM", "h A"),
-  moment("3:00 PM", "h A"),
-  moment("4:00 PM", "h A"),
-  moment("5:00 PM", "h A"),
-];
 
 var hoursArray = ["09", "10", "11", "12", "13", "14", "15", "16", "17"];
 
