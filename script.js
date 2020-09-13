@@ -37,11 +37,11 @@ $(document).ready(function () {
     var textEl = $("<textarea>");
     textEl.addClass("textarea col-sm-8 description");
     textEl.attr("placeholder, enter your todo list");
-    textEl.attr("data-hour", hoursArray[i]);
+    textEl.attr("data-time", hoursArray[i]);
 
-    if (textEl.attr("data-hour") < daysTime) {
+    if (textEl.attr("data-time") < daysTime) {
       textEl.addClass("past");
-    } else if (textEl.attr("data-hour") == daysTime) {
+    } else if (textEl.attr("data-time") == daysTime) {
       textEl.addClass("present");
     } else {
       textEl.addClass("future");
@@ -56,13 +56,13 @@ $(document).ready(function () {
     var buttonEl = $("<button>");
     buttonEl.addClass("saveBtn col-sm-2");
     buttonEl.text("SAVE");
-    buttonEl.attr("data-hour", hoursArray[i]);
+    buttonEl.attr("data-time", hoursArray[i]);
     rowEl.append(buttonEl);
   }
 
   // LOCAL STORAGE
   $(".saveBtn").on("click", function () {
-    var saveHour = $(this).attr("data-hour");
+    var saveHour = $(this).attr("data-time");
     console.log(saveHour);
 
     var saveText = $(this).siblings(".description").val();
